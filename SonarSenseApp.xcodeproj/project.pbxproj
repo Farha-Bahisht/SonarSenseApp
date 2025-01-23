@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		27448D652CEFF2EB0057D206 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27448D642CEFF2EB0057D206 /* CoreBluetooth.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		27448D472CEFF1170057D206 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		27448D362CEFF1150057D206 /* SonarSenseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SonarSenseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27448D462CEFF1170057D206 /* SonarSenseAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SonarSenseAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27448D502CEFF1170057D206 /* SonarSenseAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SonarSenseAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27448D642CEFF2EB0057D206 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27448D652CEFF2EB0057D206 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,7 @@
 				27448D382CEFF1150057D206 /* SonarSenseApp */,
 				27448D492CEFF1170057D206 /* SonarSenseAppTests */,
 				27448D532CEFF1170057D206 /* SonarSenseAppUITests */,
+				27448D632CEFF2EA0057D206 /* Frameworks */,
 				27448D372CEFF1150057D206 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +97,14 @@
 				27448D502CEFF1170057D206 /* SonarSenseAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		27448D632CEFF2EA0057D206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27448D642CEFF2EB0057D206 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

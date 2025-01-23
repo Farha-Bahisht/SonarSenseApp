@@ -11,7 +11,7 @@ import SwiftUI
 struct SonarSenseAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomePageViewTS()
         }
     }
 }

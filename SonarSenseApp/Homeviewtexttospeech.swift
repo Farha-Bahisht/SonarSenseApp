@@ -1,15 +1,20 @@
 //
-//  ContentView.swift
+//  Homeviewtexttospeech.swift
 //  SonarSenseApp
 //
-//  Created by Farha Bahisht on 11/21/24.
+//  Created by Farha Bahisht on 11/22/24.
 //
 
 import SwiftUI
+import AVFoundation
 
-struct Homeviewtexttospeech: View {
+import SwiftUI
+import AVFoundation
+
+struct HomePageViewTS: View {
     @StateObject private var bluetoothManager = BluetoothManager()
     @State private var vibrationIntensity: Double = 5.0 // Default vibration intensity level
+    private let speechSynthesizer = AVSpeechSynthesizer()
 
     var body: some View {
         NavigationView {
@@ -19,16 +24,34 @@ struct Homeviewtexttospeech: View {
                     HStack {
                         Text(bluetoothManager.isConnected ? "Smartwatch Connected" : "Not Connected")
                             .font(.headline)
+
                         Spacer()
+
+                        // Add Text-to-Speech button for Connection Status
+                        Button(action: {
+                            let message = bluetoothManager.isConnected ?
+                                "Smartwatch is currently connected." :
+                                "Smartwatch is not connected."
+                            speak(text: message)
+                        }) {
+                            Image(systemName: "speaker.wave.2.fill")
+                                .foregroundColor(.blue)
+                                .padding()
+                        }
+
+                        // Bluetooth Scan Button
                         Button(action: {
                             print("Starting Bluetooth Scanning...")
                             bluetoothManager.centralManagerDidUpdateState(bluetoothManager.centralManager)
                         }) {
-                            Text("Scan")
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                            HStack {
+                                Image(systemName: "antenna.radiowaves.left.and.right")
+                                Text("Scan")
+                            }
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                         }
                     }
                 }
@@ -49,6 +72,13 @@ struct Homeviewtexttospeech: View {
                                 .font(.subheadline)
                         }
                         Spacer()
+                        Button(action: {
+                            speak(text: "Palette is selected. Edit your watch face here.")
+                        }) {
+                            Image(systemName: "speaker.wave.2.fill")
+                                .foregroundColor(.blue)
+                                .padding()
+                        }
                     }
                 }
 
@@ -64,9 +94,21 @@ struct Homeviewtexttospeech: View {
                         }
                         .padding()
 
-                        Text("Current Intensity: \(Int(vibrationIntensity))")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
+                        HStack {
+                            Text("Current Intensity: \(Int(vibrationIntensity))")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+
+                            Spacer()
+
+                            Button(action: {
+                                speak(text: "Current vibration intensity is \(Int(vibrationIntensity)).")
+                            }) {
+                                Image(systemName: "speaker.wave.2.fill")
+                                    .foregroundColor(.blue)
+                                    .padding()
+                            }
+                        }
                     }
                 }
 
@@ -86,9 +128,16 @@ struct Homeviewtexttospeech: View {
             .navigationTitle("My Watch")
         }
     }
+
+    // Function to handle text-to-speech
+    private func speak(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechSynthesizer.speak(utterance)
+    }
 }
 
-struct SettingsRow2: View {
+struct SettingsRow: View {
     var icon: String
     var title: String
 
@@ -102,8 +151,8 @@ struct SettingsRow2: View {
     }
 }
 
-struct HomePageView_Previews: PreviewProvider {
+struct HomePageViewTS_Previews: PreviewProvider {
     static var previews: some View {
-        Homeviewtexttospeech()
+        HomePageViewTS()
     }
 }
